@@ -1,6 +1,6 @@
 
 import React from 'react';
-
+import YouTube from 'react-native-youtube';
 import {
   SafeAreaView,
   ScrollView,
@@ -14,41 +14,38 @@ import {
 
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  
 
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <SafeAreaView>
      <View>
 
       <Text>
         I am good
       </Text>
+      <View>
+      <YouTube
+  videoId="SFPQlKcePu8" // The YouTube video ID
+  apiKey='AIzaSyAU9LNmUYtbQerajINV1suVBblsYdEn6dI'
+  play // control playback of video with true/false
+  fullscreen // control whether the video should play in fullscreen or inline
+  onFullScreenEnter={() => Orientation.unlockAllOrientations()}
+  onFullScreenExit={() => Orientation.lockToPortrait()}
+  loop // control whether the video should loop when ended
+  // onReady={e => this.setState({ isReady: true })}
+  // onChangeState={e => this.setState({ status: e.state })}
+  // onChangeQuality={e => this.setState({ quality: e.quality })}
+  // onError={e => this.setState({ error: e.error })}
+  style={{  height: 300 }}
+/>
+      </View>
      </View>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
+  
 });
 
 export default App;
